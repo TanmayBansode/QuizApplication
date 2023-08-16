@@ -1,0 +1,167 @@
+/* Main container */
+.container {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Card */
+.card {
+  max-width: 1000px;
+  margin: 2.6rem auto;
+  background-color: #f0f4f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px 50px 30px;
+}
+
+/* Question Styliing */
+.card-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #102a54;
+}
+.card-text {
+  font-size: 28px;
+  color: #4d4d4d;
+  margin-bottom: 2rem;
+}
+
+.list-group-item {
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Option Styling*/
+.btn-transparent {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-radius: 5px;
+}
+
+.btn-transparent:hover {
+  background-color: #d0e2f2;
+  color: #102a54;
+}
+
+.btn-transparent.selected {
+  background-color: #00adb5;
+  color: #ffffff;
+  box-shadow: 0 0 4px #00adb5;
+}
+
+/* Question Numbers Grid */
+.question-numbers-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.question-number {
+  margin: 5px;
+  padding: 15px;
+  border: 1px solid #00adb5;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f0f4f8;
+  color: #4d4d4d;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.question-number.active {
+  background-color: #00adb5;
+  color: #ffffff;
+}
+
+/* Navigation Buttons Styling */
+.nav-div{
+  padding-top: 20px;
+}
+
+.btn-secondary,
+.btn-primary,
+.btn-success {
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-secondary {
+  background-color: #1f4682;
+  max-height: 70px;
+  padding: 12px 24px;
+  margin-right: 10px;
+}
+
+.btn-primary {
+  background-color: #1f4682;
+  padding: 12px 18px;
+  margin-left: 10px;
+  max-height: 70px;
+}
+
+.btn-success {
+  background-color: #35b387;
+  padding: 12px 24px;
+  margin-left: 10px;
+  max-height: 70px;
+}
+
+.btn-success:hover {
+  background-color: #34dea2;
+}
+
+.navibutton {
+  font-size: 28px;
+  margin-top: 20px;
+}
+
+.btn-secondary:hover,
+.btn-primary:hover,
+.btn-success:hover {
+  opacity: 0.9;
+}
+
+/* Logo Styling */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.mindspark-logo {
+  max-width: 360px;
+}
+
+/* Timer Styling */
+.timer-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+  position: absolute;
+  top: 20px;
+  right: 0;
+}
+
+.timer-box {
+  text-align: center;
+  font-size: 24px;
+  color: #f0f5f9;
+  background-color: #222831;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: 2px solid #00adb5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
