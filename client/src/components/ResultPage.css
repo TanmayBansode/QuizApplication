@@ -1,0 +1,111 @@
+.container {
+    margin-top: 1rem;
+}
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+  
+.result-card {
+    background-color: #eeeeee; 
+    border-radius: 15px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    width: 70%; 
+    max-width: 400px; 
+    margin: 0 auto; 
+}
+  
+.score-display {
+    font-size: 26px;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
+    color: #393E46; 
+    transition: all 0.3s ease;
+}
+.result-card:hover .score-display{
+    transform: scale(1.2);
+}
+  
+.score-highlight {
+    font-weight: bold;
+    font-size:40px;
+    color: #222831; 
+    transition: all 0.3s ease;
+}
+.result-card:hover .score-highlight{
+    transform: scale(1.2);
+}
+  
+.home-link {
+    display: block;
+    margin: 15px auto; 
+    background-color: #08888f;
+}
+  
+.leaderboard {
+    padding: 15px;
+    background-color: transparent; 
+    border-radius: 15px;
+    width: 70%; 
+    max-width: 800px; 
+    margin: 20px auto;
+}
+  
+.leaderboard-heading {
+    font-size: 30px;
+    margin: 20px auto 25px;
+    color: #cfcdcd;
+    text-align: center;
+}
+.leaderboard-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #F9F7F7; 
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 24px;
+    color: #222831; 
+    transition: all 0.3s ease;
+}
+.leaderboard-entry:hover {
+    transform: scale(1.05);
+}
+
+.leaderboard-entry:hover {
+    background-color: #e0e0e0;
+}
+
+.rank {
+    width: 6%;
+    font-weight: bold;
+    color: #3F72AF;
+    margin-left: 1%;
+}
+
+.name {
+    width: 50%;
+    font-weight: bold;
+    text-align: left;
+    color: #112D4E;
+}  
+.score {
+    width: 20%;
+    margin-right: 3%;
+    text-align: right;
+    font-weight: bold;
+    color: #27456b; 
+    transition: all 0.3s ease;
+}
+.leaderboard-entry:hover .score {
+    transform: scale(1.4);
+}
