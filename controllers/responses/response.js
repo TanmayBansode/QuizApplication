@@ -43,3 +43,18 @@ exports.response = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+exports.getResponses = async (req, res) => {
+  const userEmail = req.query.email;
+
+  try {
+    const userResponse = await UserResponse.findOne({ email: userEmail });
+    if (!userResponse) {
+      return res.status(404).json({ message: "User response not found" });
+    }
+
+    res.json({ score: userResponse.score });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching user score" });
+  }
+};

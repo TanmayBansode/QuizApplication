@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import mindsparkName from "../assets/mindspark23.png";
 import "./TestPage.css";
 
 function TestPage() {
   const [questions, setQuestions] = useState([]);
+  const [score, setScore] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userResponses, setUserResponses] = useState([]);
-  const [remainingTime, setRemainingTime] = useState(10); //onLoad Submit is prevented
+  const [remainingTime, setRemainingTime] = useState(10);
   const location = useLocation();
   const navigate = useNavigate();
   const { name } = location.state;
@@ -71,15 +71,12 @@ function TestPage() {
         selectedAnswer: response.selectedAnswer,
       }));
 
-      let totalScore = 0;
-
       const response = await axios.post(
         `${serverUrl}/responses`,
         {
           name: name,
           email: email,
           responses: responsesWithoutIsCorrect,
-          score: totalScore,
           formData: location.state,
         },
         {
@@ -89,8 +86,15 @@ function TestPage() {
         }
       );
       console.log(response.data);
+
+      const responseScore = response.data.score;
+      setScore(responseScore);
+      console.log(responseScore);
+      console.log(score);
+
       console.log("Responses submitted Successfully");
-      navigate("/result", { state: { score: totalScore } });
+      navigate("/result", { state: { score: responseScore } });
+      console.log(location.state);
     } catch (error) {
       console.error("Error submitting responses:", error);
     }
@@ -177,9 +181,7 @@ function TestPage() {
 
   return (
     <div className="test-page-container">
-      <div className="logo-container">
-        <img className="mindspark-logo" src={mindsparkName} alt="Mindspark23" />
-      </div>
+        <h1 className="top-title">Ultimate Quiz 101</h1>
       <div className="timer-container">
         <div className="timer-box">
           Time Remaining: {formatTime(remainingTime)}

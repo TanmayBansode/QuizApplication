@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import examPortalImage from "../assets/mindsparkLogo2.png";
+import examPortalImage from "../assets/1.avif";
 import { RiEyeLine } from "react-icons/ri";
 import "./HomePage.css";
 
@@ -45,10 +45,7 @@ function HomePage() {
       );
     } else {
       try {
-        const response = await axios.post(
-          `${serverUrl}/users/check`,
-          formData
-        );
+        const response = await axios.post(`${serverUrl}/users/check`, formData);
 
         if (response.status === 200) {
           console.log(response.data);
@@ -74,14 +71,13 @@ function HomePage() {
   return (
     <div className="container mt-5">
       <div className="card text-center">
+        <img
+          src={examPortalImage}
+          alt="Exam Portal"
+          className="img-fluid mb-4 top-img"
+        />
         <div className="card-body">
-          <img
-            src={examPortalImage}
-            alt="Exam Portal"
-            className="img-fluid mb-4"
-            style={{ maxWidth: "300px" }}
-          />
-          <h1 className="card-title">Welcome to the Exam Portal</h1>
+          <h1 className="card-title">Ultimate Quiz 101</h1>
           <p className="card-text">Prepare yourself for the upcoming test!</p>
           <div className="mt-4">
             <div className="form-group">

@@ -33,6 +33,18 @@
   cursor: pointer;
 }
 
+
+.top-title {
+  font-size: 3rem;
+  color: #ffffff; 
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 30px auto 2px;
+  font-style: italic; 
+  transform: perspective(100px) rotateX(2deg); 
+}
+
+
 /* Option Styling*/
 .btn-transparent {
   background: transparent;

@@ -23,6 +23,14 @@
   padding-bottom: 0px;
 }
 
+.top-img{
+  width: 400px;
+  height: 240px;
+  margin: auto auto;
+  border-radius: 50px;
+
+}
+
 /* Primary Button */
 .btn-primary {
   background-color: #007bff;
