@@ -67,8 +67,3 @@
 
 <span style="color:black; font-size:1.2em;">This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.</span>
 
-## <span style="color:blue; font-size:1.5em; font-weight:bold;">Acknowledgments</span>
-
-* <span style="color:black; font-size:1.2em;">Hat tip to anyone whose code was used</span>
-* <span style="color:black; font-size:1.2em;">Inspiration</span>
-* <span style="color:black; font-size:1.2em;">etc</span>
