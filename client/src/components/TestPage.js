@@ -18,23 +18,29 @@ function TestPage() {
   const fetchQuestions = useCallback(async () => {
     try {
       const jwt = localStorage.getItem("jwt");
-
+  
       const response = await axios.get(`${serverUrl}/questions`, {
         headers: {
           Authorization: `${jwt}`,
         },
       });
-
-      console.log("Connection Established");
+  
+      const initialResponses = response.data.map(question => ({ questionId: question._id, selectedAnswer: -1 }));
       setQuestions(response.data);
-      setUserResponses(
-        Array(response.data.length).fill({ questionId: "", selectedAnswer: "" })
-      );
+      setUserResponses(initialResponses);
       console.log("All Questions Received");
     } catch (error) {
       console.error("Error fetching questions:", error);
     }
   }, []);
+  
+  const handleOptionSelect = (selectedAnswer) => {
+    const updatedResponses = [...userResponses];
+    const currentResponse = updatedResponses[currentQuestionIndex];
+    updatedResponses[currentQuestionIndex] = { ...currentResponse, selectedAnswer };
+    setUserResponses(updatedResponses);
+  };
+  
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex === questions.length - 1) {
@@ -51,17 +57,6 @@ function TestPage() {
     }
   };
 
-  const handleOptionSelect = (selectedAnswer) => {
-    const updatedResponses = [...userResponses];
-    const question = questions[currentQuestionIndex];
-
-    updatedResponses[currentQuestionIndex] = {
-      questionId: question._id,
-      selectedAnswer,
-    };
-
-    setUserResponses(updatedResponses);
-  };
 
   const submitResponses = useCallback(async () => {
     try {
@@ -71,6 +66,7 @@ function TestPage() {
         selectedAnswer: response.selectedAnswer,
       }));
 
+      console.log("responses : ", responsesWithoutIsCorrect);
       const response = await axios.post(
         `${serverUrl}/responses`,
         {
@@ -93,7 +89,7 @@ function TestPage() {
       console.log(score);
 
       console.log("Responses submitted Successfully");
-      navigate("/result", { state: { score: responseScore } });
+      navigate("/result");
       console.log(location.state);
     } catch (error) {
       console.error("Error submitting responses:", error);
@@ -123,7 +119,17 @@ function TestPage() {
       }
     };
 
+    const checkIfGiven = async () => {
+       const user = await axios.post(`${serverUrl}/users/getUser`, {userEmail : email});
+       console.log("user Data : ", user.data);
+       if(user.data.hasGiven){
+        console.log("Test Already Given");
+        navigate("/result", { state: { score } });
+       }
+    };
+
     fetchRemainingTime();
+    checkIfGiven();
   }, []);
 
   useEffect(() => {

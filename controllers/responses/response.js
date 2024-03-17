@@ -1,8 +1,10 @@
 const UserResponse = require("../../models/userResponse.js");
+const User = require("../../models/user.js");
 const Question = require("../../models/question.js");
 
 exports.response = async (req, res) => {
   const { name, email , responses, formData } = req.body;
+  console.log(req.body);
 
   try {
     let score = 0;
@@ -38,6 +40,15 @@ exports.response = async (req, res) => {
 
     const savedResponse = await newUserResponse.save();
 
+    console.log(">>Response Updated");
+
+    await User.findOneAndUpdate(
+      { email: email },
+      { $set: { score: score, hasGiven: true, isGiving: false } },
+      { new: true }
+    );
+
+    console.log("User Updated");
     res.status(201).json(savedResponse);
   } catch (error) {
     res.status(400).json({ message: error.message });

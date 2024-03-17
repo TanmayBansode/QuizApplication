@@ -29,9 +29,6 @@
     color: #393E46; 
     transition: all 0.3s ease;
 }
-.result-card:hover .score-display{
-    transform: scale(1.2);
-}
   
 .score-highlight {
     font-weight: bold;
@@ -78,7 +75,7 @@
     transition: all 0.3s ease;
 }
 .leaderboard-entry:hover {
-    transform: scale(1.05);
+    transform: scale(1.10);
 }
 
 .leaderboard-entry:hover {
@@ -105,7 +102,4 @@
     font-weight: bold;
     color: #27456b; 
     transition: all 0.3s ease;
-}
-.leaderboard-entry:hover .score {
-    transform: scale(1.4);
 }

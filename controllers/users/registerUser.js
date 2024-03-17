@@ -29,7 +29,8 @@ exports.registerUser = async (req, res) => {
         }
 
         // User Registration Complete
-        user.hasGiven = true;
+        user.isGiving = true;
+  
         let token = signToken();
 
         await user.save();

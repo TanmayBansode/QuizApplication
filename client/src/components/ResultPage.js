@@ -4,14 +4,27 @@ import axios from 'axios';
 import "./ResultPage.css";
 
 function ResultPage() {
-  const location = useLocation();
-  const [score, setScore] = useState(location.state.score);
+  const [score, setScore] = useState(null);
+  const [email, setEmail] = useState(null);
   const [leaderboard, setLeaderboard] = useState([]);
   const serverUrl = process.env.REACT_APP_SERVER_URL;
 
   useEffect(() => {
-    console.log(score);
-  }, [score]);
+    const checkScore = async () => {
+      try {
+        const jwtEmail = localStorage.getItem("email");
+        setEmail(jwtEmail);
+        const response = await axios.post(`${serverUrl}/users/getUser`, { userEmail: email });
+        if (response.data.hasGiven) {
+          setScore(response.data.score);
+        }
+      } catch (error) {
+        console.error("Error fetching user score:", error);
+      }
+    };
+
+    checkScore(); 
+  }, [email, serverUrl]);
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -25,11 +38,12 @@ function ResultPage() {
         const sortedResponses = response.data.sort((a, b) => b.score - a.score);
         setLeaderboard(sortedResponses.slice(0, 5));
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching leaderboard:", error);
       }
     };
+
     fetchLeaderboard();
-  }, []);
+  }, [serverUrl]);
 
   return (
     <div className="container result-container">
@@ -39,6 +53,9 @@ function ResultPage() {
         </p>
         <Link to="/" className="btn btn-secondary home-link">
           Back to Home
+        </Link>
+        <Link to="/stats" className="btn btn-secondary home-link">
+          See Statistics
         </Link>
       </div>
       <div className="leaderboard">

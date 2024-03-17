@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import examPortalImage from "../assets/1.avif";
@@ -45,10 +45,12 @@ function HomePage() {
       );
     } else {
       try {
+        console.log("Server URL : ", serverUrl)
         const response = await axios.post(`${serverUrl}/users/check`, formData);
 
         if (response.status === 200) {
           console.log(response.data);
+          localStorage.setItem("email", formData.email);
           localJwt(response.data.token);
           navigate("/test", { state: formData });
         } else {

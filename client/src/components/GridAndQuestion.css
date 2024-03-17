@@ -1,0 +1,70 @@
+.grid-and-question-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+  max-height: calc(100vh - 100px); 
+}
+
+.question-container {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.question-container h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.question-text {
+  margin-bottom: 15px;
+}
+
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.option-button {
+  padding: 8px 16px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.option-button.selected {
+  background-color: #b0bec5;
+  border: 2px solid black;
+}
+
+.option-button.correct-answer {
+  border-color: green; 
+}
+
+.correct-answer-option {
+  border-color: red; 
+  color: white; 
+  background-color: green; 
+}
+
+
+.status {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.status.correct {
+  color: green;
+}
+
+.status.incorrect {
+  color: red;
+}
+
+.status.unattempted {
+  color: brown;
+}

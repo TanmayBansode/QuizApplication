@@ -22,6 +22,13 @@ const userSchema = new Schema({
     type: Boolean,
     required: true,
   },
+  isGiving: {
+    type: Boolean,
+    required: true,
+  },
+  score : {
+    type: Number
+  },
 });
 
 const User = model("User", userSchema);
